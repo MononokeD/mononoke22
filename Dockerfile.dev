@@ -1,0 +1,28 @@
+# Dockerfile.dev
+FROM ruby:3.4.2
+
+# Встановлення залежностей
+RUN apt-get update -qq && apt-get install -y \
+    nodejs \
+    postgresql-client \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Встановлення робочої директорії
+WORKDIR /app
+
+# Копіювання Gemfile та Gemfile.lock
+COPY Gemfile Gemfile.lock ./
+
+# Встановлення gems
+RUN bundle install
+
+# Копіювання всього проєкту
+COPY . .
+
+# Відкриття порту
+EXPOSE 3000
+
+# Команда запуску
+CMD ["rails", "server", "-b", "0.0.0.0"]

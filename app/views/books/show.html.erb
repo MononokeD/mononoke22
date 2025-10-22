@@ -1,0 +1,19 @@
+<div class="container">
+  <h1><%= @book.title %></h1>
+
+  <div class="card">
+    <p><strong>Author:</strong> <%= @book.author %></p>
+    <p><strong>Year:</strong> <%= @book.year %></p>
+    <p><strong>Description:</strong></p>
+    <p><%= @book.description.presence || "No description provided." %></p>
+  </div>
+
+  <div class="actions">
+    <%= link_to "✏️ Edit", edit_book_path(@book), class: "button button-warning" %>
+    <%= button_to "🗑️ Delete", book_path(@book),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "button button-danger" %>
+    <%= link_to "← Back to Books", books_path, class: "button button-secondary" %>
+  </div>
+</div>

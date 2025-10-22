@@ -1,0 +1,11 @@
+<div class="page-wrapper">
+  <h1 class="page-title">Add a New Book</h1>
+
+  <div class="form-container">
+    <%= render 'form', book: @book %>
+  </div>
+
+  <div class="back-link">
+    <%= link_to "← Back to Books", books_path %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="page-wrapper">
+  <h1>📚 Bookshelf</h1>
+
+  <%= link_to "+ New Book", new_book_path, class: "add-btn" %>
+
+  <table class="books-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= link_to book.title, book_path(book) %></td>
+          <td><%= book.author %></td>
+          <td><%= book.year %></td>
+          <td class="table-actions">
+            <%= link_to "Show", book_path(book), class: "btn btn-blue" %>
+            <%= link_to "Edit", edit_book_path(book), class: "btn btn-orange" %>
+            <%= button_to "Delete", book_path(book),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" },
+                          class: "btn btn-red" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<footer>© 2025 Bookshelf App</footer>

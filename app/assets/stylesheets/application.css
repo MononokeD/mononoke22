@@ -1,0 +1,141 @@
+/*
+ *= require_self
+ *= require_tree .
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f2f4f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========== WRAPPER ========== */
+.page-wrapper {
+  background: #fff;
+  margin-top: 40px;
+  padding: 40px;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 16px;
+  border: 1px solid #dce3ec;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== TITLE ========== */
+h1 {
+  text-align: center;
+  color: #111827;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* ========== TABLE ========== */
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.books-table th {
+  text-align: left;
+  background: #e9edf5;
+  padding: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.books-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #1f2937;
+}
+
+.books-table tr:nth-child(even) {
+  background-color: #f9fafc;
+}
+
+.books-table tr:hover {
+  background-color: #eef2ff;
+  transition: 0.2s;
+}
+
+/* ========== BUTTONS ========== */
+.table-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn-blue {
+  background-color: #3b82f6;
+}
+.btn-blue:hover {
+  background-color: #2563eb;
+}
+
+.btn-orange {
+  background-color: #f59e0b;
+}
+.btn-orange:hover {
+  background-color: #d97706;
+}
+
+.btn-red {
+  background-color: #ef4444;
+}
+.btn-red:hover {
+  background-color: #dc2626;
+}
+
+/* ========== ADD BUTTON ========== */
+.add-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+.add-btn:hover {
+  background: linear-gradient(135deg, #3730a3, #2563eb);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3);
+}
+
+/* ========== LINKS ========== */
+a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 40px;
+}
