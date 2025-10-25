@@ -55,7 +55,6 @@ end
 
 group :development, :test do
   gem 'bullet'
-  gem 'faker'
   gem 'i18n-tasks', '~> 1.0.13'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -75,11 +74,22 @@ group :test do
   gem 'n_plus_one_control'
 
   gem 'rspec_junit_formatter', require: false
-  gem 'rspec-rails'
   gem 'simplecov', require: false
   gem 'simplecov-cobertura', require: false
 
   gem 'database_cleaner-active_record'
-  gem 'shoulda-matchers'
   gem 'webmock'
+end
+
+gem 'kaminari'
+
+gem 'jbuilder', '~> 2.14'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0'
+  gem 'faker'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
 end
