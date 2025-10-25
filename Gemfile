@@ -14,14 +14,15 @@ gem 'propshaft'
 gem 'rails', '~> 8.0.2'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-
+gem 'mini_magick'
+gem 'fastimage'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem 'kamal', require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem 'thruster', require: false
-
+gem 'csv', require: true
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem 'solid_cable'
 gem 'solid_cache'
@@ -42,6 +43,8 @@ gem 'strong_migrations'
 gem 'dry-matcher'
 gem 'dry-monads'
 gem 'dry-rails', '~> 0.3'
+gem 'shrine', '~> 3.5'
+gem 'image_processing', '~> 1.12'
 
 group :development do
   gem 'amazing_print'

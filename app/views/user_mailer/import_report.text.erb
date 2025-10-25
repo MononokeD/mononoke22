@@ -1,0 +1,29 @@
+Book Import Report
+==================
+
+Import ID: <%= @import.id %>
+Filename: <%= @import.filename %>
+Status: <%= @import.status.upcase %>
+
+<% if @import.completed_at %>
+Started: <%= @import.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+Completed: <%= @import.completed_at.strftime("%Y-%m-%d %H:%M:%S") %>
+Duration: <%= (@import.duration).round(2) %> seconds
+<% end %>
+
+Statistics:
+-----------
+Total Rows: <%= @import.total_rows %>
+Successfully Created: <%= @import.created_count %>
+Skipped: <%= @import.skipped_count %>
+Success Rate: <%= @import.success_rate %>%
+
+<% if @import.errors.present? %>
+Errors:
+-------
+<%= @import.errors %>
+<% end %>
+
+---
+Bookshelf Application
+<%= root_url %>

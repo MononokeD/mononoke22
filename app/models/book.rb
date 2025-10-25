@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  author      :string
+#  cover_data  :text
 #  description :text
 #  title       :string
 #  year        :integer
@@ -16,15 +17,20 @@
 #  index_books_on_author_id  (author_id)
 #
 class Book < ApplicationRecord
+  # Shrine uploader
+  include CoverUploader::Attachment(:cover)
+  
+  # Зв'язки
   belongs_to :author, optional: true
   
+  # Валідації
   validates :title, presence: true
-  validates :author_name, presence: true
   validates :year, presence: true, 
                    numericality: { only_integer: true, 
                                    greater_than_or_equal_to: 1900, 
                                    less_than_or_equal_to: 2030 }
   
+  # Scopes для пошуку та сортування
   scope :by_title, ->(title) { where("title ILIKE ?", "%#{title}%") if title.present? }
   scope :by_author_name, ->(author) { where("author ILIKE ?", "%#{author}%") if author.present? }
   scope :sorted_by, ->(sort_option) {
@@ -42,5 +48,11 @@ class Book < ApplicationRecord
     end
   }
   
+  # Делегування для спрощення доступу до автора
   delegate :name, to: :author, prefix: true, allow_nil: true
+  
+  # Метод для отримання URL обкладинки
+  def cover_url(version = :original)
+    cover&.url
+  end
 end

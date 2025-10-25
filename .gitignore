@@ -36,3 +36,5 @@
 # Ignore application config.
 #/.env
 #/.env.*local
+public/uploads/
+public/uploads/

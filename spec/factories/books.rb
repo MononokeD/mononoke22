@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  author      :string
+#  cover_data  :text
 #  description :text
 #  title       :string
 #  year        :integer

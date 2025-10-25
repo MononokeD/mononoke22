@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-12">
+    <h1>📋 Import History</h1>
+    
+    <%= link_to "New Import", new_import_path, class: "btn btn-primary mb-3" %>
+    <%= link_to "Back to Books", books_path, class: "btn btn-secondary mb-3" %>
+    
+    <% if @imports.any? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Filename</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Total/Created/Skipped</th>
+            <th>Success Rate</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @imports.each do |import| %>
+            <tr>
+              <td><%= import.id %></td>
+              <td><%= import.filename %></td>
+              <td><%= import.user_email %></td>
+              <td>
+                <% case import.status %>
+                <% when 'pending' %>
+                  <span class="badge bg-secondary">Pending</span>
+                <% when 'processing' %>
+                  <span class="badge bg-info">Processing</span>
+                <% when 'completed' %>
+                  <span class="badge bg-success">Completed</span>
+                <% when 'failed' %>
+                  <span class="badge bg-danger">Failed</span>
+                <% end %>
+              </td>
+              <td>
+                <%= import.total_rows %> / 
+                <span class="text-success"><%= import.created_count %></span> / 
+                <span class="text-warning"><%= import.skipped_count %></span>
+              </td>
+              <td>
+                <% if import.status == 'completed' %>
+                  <%= import.success_rate %>%
+                <% else %>
+                  -
+                <% end %>
+              </td>
+              <td><%= import.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td>
+                <%= link_to "View", import_path(import), class: "btn btn-sm btn-info" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <%= paginate @imports %>
+    <% else %>
+      <div class="alert alert-info">
+        No imports yet. <%= link_to "Create your first import", new_import_path %>.
+      </div>
+    <% end %>
+  </div>
+</div>
