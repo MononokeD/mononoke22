@@ -3,7 +3,19 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all
+    @books = Book.includes(:author).all
+    
+    # Пошук по назві
+    @books = @books.by_title(params[:search_title]) if params[:search_title].present?
+    
+    # Пошук по автору
+    @books = @books.by_author_name(params[:search_author]) if params[:search_author].present?
+    
+    # Сортування
+    @books = @books.sorted_by(params[:sort]) if params[:sort].present?
+    
+    # За замовчуванням сортуємо за датою створення
+    @books = @books.order(created_at: :desc) unless params[:sort].present?
   end
 
   # GET /books/1
@@ -13,6 +25,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @active_authors = Author.active.ordered_by_name
   end
 
   # POST /books
@@ -22,12 +35,14 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
     else
+      @active_authors = Author.active.ordered_by_name
       render :new, status: :unprocessable_entity
     end
   end
 
   # GET /books/1/edit
   def edit
+    @active_authors = Author.active.ordered_by_name
   end
 
   # PATCH/PUT /books/1
@@ -35,6 +50,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to @book, notice: 'Book was successfully updated.'
     else
+      @active_authors = Author.active.ordered_by_name
       render :edit, status: :unprocessable_entity
     end
   end
@@ -51,6 +67,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :author, :year, :description)
+      params.require(:book).permit(:title, :author_id, :year, :description)
     end
 end

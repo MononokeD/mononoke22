@@ -9,6 +9,11 @@
 #  year        :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  author_id   :bigint
+#
+# Indexes
+#
+#  index_books_on_author_id  (author_id)
 #
 require 'rails_helper'
 
