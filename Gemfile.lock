@@ -80,7 +80,7 @@ GEM
       rack-test (>= 1.1.0, < 2.0)
       rest-client (>= 2.0.2, < 3.0)
       rspec (~> 3.8)
-    amazing_print (1.8.1)
+    amazing_print (2.0.0)
     annotaterb (4.19.0)
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
