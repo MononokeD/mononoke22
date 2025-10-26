@@ -16,6 +16,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'mini_magick'
 gem 'fastimage'
+gem 'graphql'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
@@ -54,6 +55,7 @@ group :development do
   gem 'letter_opener'
   gem 'letter_opener_web', '~> 2.0'
   gem 'web-console'
+  gem 'graphiql-rails'
 end
 
 group :development, :test do

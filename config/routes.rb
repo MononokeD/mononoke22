@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  # Головна сторінка - список книг
+  # GraphQL
+  post "/graphql", to: "graphql#execute"
+  
+  # GraphiQL IDE (тільки для development)
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+  
+  # Головна сторінка
   root "books#index"
   
   # Web маршрути
@@ -7,7 +15,7 @@ Rails.application.routes.draw do
   resources :authors, only: [:index, :show]
   resources :imports, only: [:index, :new, :create, :show]
   
-  # API v1
+  # REST API v1
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :books, only: [:index, :show]
